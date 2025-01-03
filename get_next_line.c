@@ -6,20 +6,22 @@
 /*   By: jaiane <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 08:49:47 by jaiane            #+#    #+#             */
-/*   Updated: 2024/12/28 17:29:36 by jaiane           ###   ########.fr       */
+/*   Updated: 2024/12/28 20:19:13 by jaiane           ###   ########.fr       */
 /*                                                                            */
 /**************************************************************************** */
 
 #include "get_next_line.h"
-
-#include <fcntl.h>
-#include <stdio.h>
 
 char	*join_buff(char *remaining, char *cup_buffer)
 {
 	char	*temp;
 
 	temp = ft_strjoin(remaining, cup_buffer);
+	if (!temp)
+	{
+		free(remaining);
+		return (NULL);
+	}
 	free(remaining);
 	return (temp);
 }
@@ -35,16 +37,19 @@ char	*read_line(int fd, char *readed)
 	if (!cup_buffer)
 		return (NULL);
 	bytes_read = 1;
-	while (bytes_read > 0 && !ft_strchr(readed, '\n'))
+	while (bytes_read > 0)
 	{
 		bytes_read = read(fd, cup_buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
 		{
 			free(cup_buffer);
+			free(readed);
 			return (NULL);
 		}
 		cup_buffer[bytes_read] = '\0';
 		readed = join_buff(readed, cup_buffer);
+		if (ft_strchr(readed, '\n'))
+			break;
 	}
 	free(cup_buffer);
 	return (readed);
@@ -62,7 +67,10 @@ char	*get_line(char *str)
 		i++;
 	line = ft_calloc((i + 2), sizeof(char));
 	if (!line)
+	{
+		free(str);
 		return (NULL);
+	}
 	ft_strlcpy(line, str, i + 2);
 	return (line);
 }
@@ -84,7 +92,10 @@ char	*get_remaining(char *str)
 	len = ft_strlen(str + i + 1);
 	remaining = ft_calloc(len + 1, sizeof(char));
 	if (!remaining)
+	{
+		free(str);
 		return (NULL);
+	}
 	ft_strlcpy(remaining, str + i + 1, len + 1);	
 	free(str);
 	return (remaining);

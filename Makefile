@@ -5,7 +5,7 @@ BONUS_NAME := libget_next_line_bonus.a
 
 CC := cc
 
-CCFLAGS := -Wall -Wextra -Werror
+CCFLAGS := -Wall -Wextra -Werror -D BUFFER_SIZE=1
 
 RM := rm -f
 
