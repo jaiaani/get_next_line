@@ -3,12 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaiane <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jados-sa <jados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/11 08:49:47 by jaiane            #+#    #+#             */
-/*   Updated: 2024/12/28 20:19:13 by jaiane           ###   ########.fr       */
+/*   Created: 2025/01/03 20:14:57 by jados-sa          #+#    #+#             */
+/*   Updated: 2025/01/03 20:25:09 by jados-sa         ###   ########.fr       */
 /*                                                                            */
-/**************************************************************************** */
+/* ************************************************************************** */
 
 #include "get_next_line.h"
 
@@ -29,7 +29,7 @@ char	*join_buff(char *remaining, char *cup_buffer)
 char	*read_line(int fd, char *readed)
 {
 	char	*cup_buffer;
-	int	bytes_read;
+	int		bytes_read;
 
 	if (!readed)
 		readed = ft_calloc(1, 1);
@@ -58,7 +58,7 @@ char	*read_line(int fd, char *readed)
 char	*get_line(char *str)
 {
 	char	*line;
-	int	i;
+	int		i;
 
 	i = 0;
 	if (!str || !str[i])
@@ -79,7 +79,7 @@ char	*get_remaining(char *str)
 {
 	char	*remaining;
 	int		i;
-	int		len;;
+	int		len;
 
 	i = 0;
 	while (str[i] && str[i] != '\n')
@@ -96,7 +96,7 @@ char	*get_remaining(char *str)
 		free(str);
 		return (NULL);
 	}
-	ft_strlcpy(remaining, str + i + 1, len + 1);	
+	ft_strlcpy(remaining, str + i + 1, len + 1);
 	free(str);
 	return (remaining);
 }
@@ -104,7 +104,7 @@ char	*get_remaining(char *str)
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
-	char	*line;
+	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
