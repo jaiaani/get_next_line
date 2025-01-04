@@ -32,16 +32,19 @@ char	*read_line(int fd, char *readed)
 	if (!cup_buffer)
 		return (NULL);
 	bytes_read = 1;
-	while (bytes_read > 0 && !ft_strchr(readed, '\n'))
+	while (bytes_read > 0)
 	{
 		bytes_read = read(fd, cup_buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
 		{
 			free(cup_buffer);
+			free(readed);
 			return (NULL);
 		}
 		cup_buffer[bytes_read] = '\0';
 		readed = join_buff(readed, cup_buffer);
+		if (ft_strchr(readed, '\n'))
+			break ;
 	}
 	free(cup_buffer);
 	return (readed);
