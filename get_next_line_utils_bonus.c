@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jados-sa <jados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/03 21:18:45 by jados-sa          #+#    #+#             */
+/*   Updated: 2025/01/03 21:19:41 by jados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line_bonus.h"
 
 int	ft_strlen(char *str)
@@ -19,7 +31,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	total_len = ft_strlen(s1) + ft_strlen(s2);
 	join = malloc(sizeof(char) * (total_len + 1));
-	if (!s1 || !s2 || !join )
+	if (!s1 || !s2 || !join)
 		return (NULL);
 	i = 0;
 	j = 0;
@@ -75,8 +87,8 @@ size_t	ft_strlcpy(char *dest, char *src, size_t size)
 
 void	*ft_calloc(size_t nelem, size_t elsize)
 {
-	size_t	tsize;
-	void	*space;
+	size_t			tsize;
+	void			*space;
 	unsigned char	*s;
 
 	if (nelem == 0 || elsize == 0)
@@ -89,6 +101,6 @@ void	*ft_calloc(size_t nelem, size_t elsize)
 		return (NULL);
 	s = (unsigned char *)space;
 	while (tsize--)
-		*s++ = '\0';	
+		*s++ = '\0';
 	return (space);
 }

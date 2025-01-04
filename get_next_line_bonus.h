@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jados-sa <jados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/03 21:06:33 by jados-sa          #+#    #+#             */
+/*   Updated: 2025/01/03 21:07:36 by jados-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 
@@ -6,7 +18,7 @@
 # endif
 
 # ifndef MAX_FD
-#   define MAX_FD 1024 
+#  define MAX_FD 1024 
 # endif
 
 # include <unistd.h>
