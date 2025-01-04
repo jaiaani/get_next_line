@@ -6,7 +6,7 @@
 /*   By: jados-sa <jados-sa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 20:14:57 by jados-sa          #+#    #+#             */
-/*   Updated: 2025/01/03 20:25:09 by jados-sa         ###   ########.fr       */
+/*   Updated: 2025/01/03 21:40:36 by jados-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*read_line(int fd, char *readed)
 		cup_buffer[bytes_read] = '\0';
 		readed = join_buff(readed, cup_buffer);
 		if (ft_strchr(readed, '\n'))
-			break;
+			break ;
 	}
 	free(cup_buffer);
 	return (readed);
