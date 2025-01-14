@@ -12,12 +12,17 @@
 
 #include "get_next_line_bonus.h"
 
-char	*join_buff(char *remaining, char *cup_buffer)
+char	*join_buff(char *readed, char *cup_buffer)
 {
 	char	*temp;
 
-	temp = ft_strjoin(remaining, cup_buffer);
-	free(remaining);
+	temp = ft_strjoin(readed, cup_buffer);
+	if (!temp)
+	{
+		free(readed);
+		return (NULL);
+	}
+	free(readed);
 	return (temp);
 }
 

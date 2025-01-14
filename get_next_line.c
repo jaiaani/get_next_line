@@ -12,17 +12,17 @@
 
 #include "get_next_line.h"
 
-char	*join_buff(char *remaining, char *cup_buffer)
+char	*join_buff(char *readed, char *cup_buffer)
 {
 	char	*temp;
 
-	temp = ft_strjoin(remaining, cup_buffer);
+	temp = ft_strjoin(readed, cup_buffer);
 	if (!temp)
 	{
-		free(remaining);
+		free(readed);
 		return (NULL);
 	}
-	free(remaining);
+	free(readed);
 	return (temp);
 }
 
