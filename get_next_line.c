@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jados-sa <jados-sa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jaiane <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 20:14:57 by jados-sa          #+#    #+#             */
-/*   Updated: 2025/01/03 21:40:36 by jados-sa         ###   ########.fr       */
+/*   Created: 2025/04/18 14:03:29 by jaiane            #+#    #+#             */
+/*   Updated: 2025/04/18 14:03:31 by jaiane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,7 @@ char	*get_line(char *str)
 		i++;
 	line = ft_calloc((i + 2), sizeof(char));
 	if (!line)
-	{
-		free(str);
 		return (NULL);
-	}
 	ft_strlcpy(line, str, i + 2);
 	return (line);
 }
@@ -101,12 +98,13 @@ char	*get_remaining(char *str)
 	return (remaining);
 }
 
+static char	*buffer = NULL;
+
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > MAX_FD)
 		return (NULL);
 	buffer = read_line(fd, buffer);
 	if (!buffer)
@@ -115,3 +113,15 @@ char	*get_next_line(int fd)
 	buffer = get_remaining(buffer);
 	return (line);
 }
+
+void	free_static_buffer(void)
+{
+	extern char	*buffer;
+
+    if (buffer)
+    {
+        free(buffer);
+        buffer = NULL;
+    }
+}
+
