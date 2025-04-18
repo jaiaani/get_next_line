@@ -2,7 +2,7 @@ NAME := libget_next_line.a
 
 CC := cc
 
-LIB := -L../libft -lft
+LIB := -L../libft -libft
 
 CCFLAGS := -Wall -Wextra -Werror -D BUFFER_SIZE=1
 
